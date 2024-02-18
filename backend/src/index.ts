@@ -18,9 +18,11 @@ const userManager = new UserManager();
 
 io.on('connection', (socket: Socket) => {
   console.log('a user connected');
+  console.log(socket); 
   userManager.addUser("randomName", socket);
   socket.on("disconnect", () => {
     console.log("user disconnected");
+
     userManager.removeUser(socket.id);
   })
 });
